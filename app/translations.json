@@ -1,0 +1,106 @@
+[
+    {
+        "key": "add_collection",
+        "values": [
+            {
+                "language": "en",
+                "value": "Add collection"
+            },
+            {
+                "language": "pl",
+                "value": "Dodaj kolekcję"
+            }
+        ]
+    },
+    {
+        "key": "add_flashcard",
+        "values": [
+            {
+                "language": "en",
+                "value": "Add flashcard"
+            },
+            {
+                "language": "pl",
+                "value": "Dodaj fiszkę"
+            }
+        ]
+    },
+    {
+        "key": "collection_name",
+        "values": [
+            {
+                "language": "en",
+                "value": "Collection name"
+            },
+            {
+                "language": "pl",
+                "value": "Nazwa kolekcji"
+            }
+        ]
+    },
+    {
+        "key": "save",
+        "values": [
+            {
+                "language": "en",
+                "value": "Save"
+            },
+            {
+                "language": "pl",
+                "value": "Zapisz"
+            }
+        ]
+    },
+    {
+        "key": "close",
+        "values": [
+            {
+                "language": "en",
+                "value": "Close"
+            },
+            {
+                "language": "pl",
+                "value": "Zamknij"
+            }
+        ]
+    },
+    {
+        "key": "confirm",
+        "values": [
+            {
+                "language": "en",
+                "value": "Confirm"
+            },
+            {
+                "language": "pl",
+                "value": "Potwierdź"
+            }
+        ]
+    },
+    {
+        "key": "cancel",
+        "values": [
+            {
+                "language": "en",
+                "value": "Cancel"
+            },
+            {
+                "language": "pl",
+                "value": "Anuluj"
+            }
+        ]
+    },
+    {
+        "key": "removeCollectionQuestion",
+        "values": [
+            {
+                "language": "en",
+                "value": "Are you sure you want to remove the collection?"
+            },
+            {
+                "language": "pl",
+                "value": "Czy na pewno chcesz usunąć kolekcję?"
+            }
+        ]
+    }
+]
