@@ -24,9 +24,26 @@ const styles = StyleSheet.create({
 		...getPaddingsShorthand(spacing * 3, spacing * 2, spacing * 3, spacing),
 	},
 	collectionNameText: {
+		flexGrow: 1,
 		fontFamily: 'Lato_700Bold',
 		fontSize: largeFontSize,
 		...getPaddingsShorthand(spacing * 3, spacing * 2),
+	},
+	flagsContainer: {
+		height: '100%',
+		maxHeight: '100%',
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center',
+		justifyContent: 'space-evenly',
+		width: 28,
+		marginLeft: spacing * 2,
+		marginRight: spacing,
+	},
+	flagImage: {
+		width: 28,
+		height: 14,
+		resizeMode: 'contain',
 	},
 });
 

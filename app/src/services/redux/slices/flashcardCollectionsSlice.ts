@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import FlashcardCollectionCreateEditData from '../../../models/dataModels/flashcardCollectionCreateEditData';
 import FlashcardCollectionModel from '../../../models/dataModels/flashcardCollectionModel';
 import FlashcardModel from '../../../models/dataModels/flashcardModel';
 
@@ -23,10 +24,16 @@ export const flashcardCollectionsSlice = createSlice({
 		setFlashcardCollections: (state, action: PayloadAction<FlashcardCollectionModel[]>) => {
 			state.flashcardCollections = action.payload;
 		},
-		createFlashcardCollection: (state, action: PayloadAction<string>) => {
+		createFlashcardCollection: (state, action: PayloadAction<FlashcardCollectionCreateEditData>) => {
 			const ids = state.flashcardCollections.map(o => o.id);
 			const newId = ids.length ? Math.max(...ids) + 1 : 0;
-			state.flashcardCollections.push({ id: newId, name: action.payload, flashcards: [] });
+			state.flashcardCollections.push({
+				id: newId,
+				name: action.payload.name,
+				firstLanguage: action.payload.firstLanguage,
+				secondLanguage: action.payload.secondLanguage,
+				flashcards: [],
+			});
 		},
 		removeFlashcardCollection: (state, action: PayloadAction<number>) => {
 			state.flashcardCollections = state.flashcardCollections.filter(o => o.id !== action.payload);

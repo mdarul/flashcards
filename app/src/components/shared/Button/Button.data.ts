@@ -1,11 +1,14 @@
+/* eslint-disable no-unused-vars */
+
 export enum ButtonType {
-    WHITE,
-    BLUE,
+	WHITE,
+	LIGHT_GREEN,
+	BLUE,
 }
 
 export interface ButtonProps {
-    text: string;
-    onPress: () => void;
-    type?: ButtonType;
-    style?: object;
+	text: string;
+	onPress: () => void;
+	type?: ButtonType;
+	style?: object;
 }

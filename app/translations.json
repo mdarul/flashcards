@@ -102,5 +102,31 @@
                 "value": "Czy na pewno chcesz usunąć kolekcję?"
             }
         ]
+    },
+    {
+        "key": "pickFirstLanguage",
+        "values": [
+            {
+                "language": "en",
+                "value": "Pick first language"
+            },
+            {
+                "language": "pl",
+                "value": "Wybierz pierwszy język"
+            }
+        ]
+    },
+    {
+        "key": "pickSecondLanguage",
+        "values": [
+            {
+                "language": "en",
+                "value": "Pick second language"
+            },
+            {
+                "language": "pl",
+                "value": "Wybierz drugi język"
+            }
+        ]
     }
 ]

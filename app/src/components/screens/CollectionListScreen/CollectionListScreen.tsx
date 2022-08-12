@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import { Dimensions, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,7 +9,7 @@ import BarButton from '../../shared/BarButton/BarButton';
 import styles from './CollectionListScreen.style';
 import { RootState } from '../../../services/redux/store';
 import { spacing } from '../../../globalStyles';
-import CollectionNameInputModal from './CollectionNameInputModal/CollectionNameInputModal';
+import CollectionDataInputModal from './CollectionDataInputModal/CollectionDataInputModal';
 import {
 	createFlashcardCollection,
 	editFlascardCollection,
@@ -19,9 +19,13 @@ import {
 import CollectionInfo from './CollectionInfo/CollectionInfo';
 import ConfirmationModal from '../../shared/ConfirmationModal/ConfirmationModal';
 import FlashcardCollectionModel from '../../../models/dataModels/flashcardCollectionModel';
+import FlashcardCollectionCreateEditData from '../../../models/dataModels/flashcardCollectionCreateEditData';
+import Language from '../../../models/enums/language';
+import { emptyCollectionCreateEditData } from './CollectionListScreen.data';
 
 const CollectionListScreen = () => {
-	const [collectionName, setCollectionName] = useState('');
+	const [collectionCreateEditData, setCollectionCreateEditData] =
+		useState<FlashcardCollectionCreateEditData>(emptyCollectionCreateEditData);
 	const [isCreateCollectionModalVisible, setIsCreateCollectionModalVisible] = useState(false);
 	const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
 	const [isEditCollectionModalVisible, setIsEditCollectionModalVisible] = useState(false);
@@ -31,17 +35,21 @@ const CollectionListScreen = () => {
 	const language = useSelector((state: RootState) => state.userSettingsReducers.language);
 	const dispatch = useDispatch();
 
-	const onAddCollectionPressed = useCallback(() => {
-		setIsCreateCollectionModalVisible(true);
-	}, []);
+	const clearCollectionEditData = () => {
+		setCollectionCreateEditData({ name: '', firstLanguage: Language.ENGLISH, secondLanguage: Language.ENGLISH });
+	};
 
 	const createCollection = () => {
-		dispatch(createFlashcardCollection(collectionName));
+		if (collectionCreateEditData) {
+			dispatch(createFlashcardCollection(collectionCreateEditData));
+			setIsCreateCollectionModalVisible(false);
+		}
+		clearCollectionEditData();
 		setIsCreateCollectionModalVisible(false);
 	};
 
 	const closeCreateCollectionModal = () => {
-		setCollectionName('');
+		clearCollectionEditData();
 		setIsCreateCollectionModalVisible(false);
 	};
 
@@ -60,7 +68,11 @@ const CollectionListScreen = () => {
 
 	const openEditCollectionModal = (collection: FlashcardCollectionModel) => {
 		setSelectedCollection(collection);
-		setCollectionName(collection.name);
+		setCollectionCreateEditData({
+			name: collection.name,
+			firstLanguage: collection.firstLanguage,
+			secondLanguage: collection.secondLanguage,
+		});
 		setIsEditCollectionModalVisible(true);
 	};
 
@@ -71,23 +83,23 @@ const CollectionListScreen = () => {
 
 	const editCollection = () => {
 		if (selectedCollection) {
-			dispatch(editFlascardCollection({ ...selectedCollection, name: collectionName }));
+			dispatch(editFlascardCollection({ ...selectedCollection, ...collectionCreateEditData }));
 			setIsCreateCollectionModalVisible(false);
 		}
-		setCollectionName('');
+		clearCollectionEditData();
 		setIsEditCollectionModalVisible(false);
 	};
 
 	const closeEditCollectionModal = () => {
 		setSelectedCollection(null);
-		setCollectionName('');
+		clearCollectionEditData();
 		setIsEditCollectionModalVisible(false);
 	};
 
 	const renderCollectionItem = ({ item, drag, isActive }: RenderItemParams<FlashcardCollectionModel>) => {
 		return (
 			<ScaleDecorator>
-				<TouchableOpacity onLongPress={drag} disabled={isActive}>
+				<TouchableOpacity onLongPress={drag} disabled={isActive} delayLongPress={120}>
 					<CollectionInfo
 						flashcardCollection={item}
 						onDeletePressed={openDeleteCollectionModal}
@@ -103,7 +115,7 @@ const CollectionListScreen = () => {
 		<ScreenWrapper style={styles.screenWrapperContainer}>
 			<BarButton
 				text={translate('add_collection', language)}
-				onPressed={onAddCollectionPressed}
+				onPressed={() => setIsCreateCollectionModalVisible(true)}
 				icon={<Ionicons name="add-circle-outline" size={30} color="black" style={{ marginRight: spacing / 2 }} />}
 				style={styles.addCollectionContainer}
 			/>
@@ -116,20 +128,20 @@ const CollectionListScreen = () => {
 				renderItem={renderCollectionItem}
 			/>
 
-			<CollectionNameInputModal
+			<CollectionDataInputModal
 				isVisible={isCreateCollectionModalVisible}
 				setIsVisible={setIsCreateCollectionModalVisible}
-				collectionName={collectionName}
-				setCollectionName={setCollectionName}
+				collectionData={collectionCreateEditData}
+				setCollectionData={setCollectionCreateEditData}
 				onSave={createCollection}
 				onClose={closeCreateCollectionModal}
 			/>
 
-			<CollectionNameInputModal
+			<CollectionDataInputModal
 				isVisible={isEditCollectionModalVisible}
 				setIsVisible={setIsEditCollectionModalVisible}
-				collectionName={collectionName}
-				setCollectionName={setCollectionName}
+				collectionData={collectionCreateEditData}
+				setCollectionData={setCollectionCreateEditData}
 				onSave={editCollection}
 				onClose={closeEditCollectionModal}
 			/>
