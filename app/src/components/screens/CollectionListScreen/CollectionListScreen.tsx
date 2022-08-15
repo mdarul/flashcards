@@ -22,6 +22,7 @@ import FlashcardCollectionModel from '../../../models/dataModels/flashcardCollec
 import FlashcardCollectionCreateEditData from '../../../models/dataModels/flashcardCollectionCreateEditData';
 import Language from '../../../models/enums/language';
 import { emptyCollectionCreateEditData } from './CollectionListScreen.data';
+import LanguagePickerBar from '../../shared/LanguagePickerBar/LanguagePickerBar';
 
 const CollectionListScreen = () => {
 	const [collectionCreateEditData, setCollectionCreateEditData] =
@@ -112,7 +113,9 @@ const CollectionListScreen = () => {
 	};
 
 	return (
-		<ScreenWrapper style={styles.screenWrapperContainer}>
+		<ScreenWrapper>
+			<LanguagePickerBar />
+
 			<BarButton
 				text={translate('add_collection', language)}
 				onPressed={() => setIsCreateCollectionModalVisible(true)}
