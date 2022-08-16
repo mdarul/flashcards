@@ -20,6 +20,8 @@ const CollectionDataInputModal = ({
 	onSave,
 	onClose,
 }: CollectionDataInputModalProps) => {
+	const [firstDropdownValue, setFirstDropdownValue] = useState<Language | undefined>(collectionData.firstLanguage);
+	const [secondDropdownValue, setSecondDropdownValue] = useState<Language | undefined>(collectionData.secondLanguage);
 	const [languageItems, setLanguageItems] = useState<DropdownItem[]>([]);
 	const [isFirstDropdownOpened, setIsFirstDropdownOpened] = useState(false);
 	const [isSecondDropdownOpened, setIsSecondDropdownOpened] = useState(false);
@@ -30,19 +32,22 @@ const CollectionDataInputModal = ({
 		setLanguageItems(Object.values(Language).map(o => ({ label: getLanguageFullName(o), value: o })));
 	}, [setLanguageItems]);
 
-	const updateFirstLanguage = (fn: React.Dispatch<React.SetStateAction<Language>>) => {
-		fn(lang => {
-			setCollectionData(prev => ({ ...prev, firstLanguage: language }));
-			return lang;
-		});
-	};
+	useEffect(() => {
+		setFirstDropdownValue(collectionData.firstLanguage);
+		setSecondDropdownValue(collectionData.secondLanguage);
+	}, [collectionData, setFirstDropdownValue, setSecondDropdownValue]);
 
-	const updateSecondLanguage = (fn: React.Dispatch<React.SetStateAction<Language>>) => {
-		fn(lang => {
-			setCollectionData(prev => ({ ...prev, secondLanguage: lang }));
-			return lang;
-		});
-	};
+	useEffect(() => {
+		if (firstDropdownValue) {
+			setCollectionData(prev => ({ ...prev, firstLanguage: firstDropdownValue }));
+		}
+	}, [firstDropdownValue, setCollectionData]);
+
+	useEffect(() => {
+		if (secondDropdownValue) {
+			setCollectionData(prev => ({ ...prev, secondLanguage: secondDropdownValue }));
+		}
+	}, [secondDropdownValue, setCollectionData]);
 
 	return (
 		<Modal
@@ -65,10 +70,10 @@ const CollectionDataInputModal = ({
 					<Text style={styles.textLanguageInfo}>{translate('pick_first_language', language)}:</Text>
 					<DropDownPicker
 						open={isFirstDropdownOpened}
-						value={collectionData.firstLanguage}
+						value={firstDropdownValue ?? null}
 						items={languageItems}
 						setOpen={setIsFirstDropdownOpened}
-						setValue={updateFirstLanguage}
+						setValue={setFirstDropdownValue}
 						setItems={setLanguageItems}
 						zIndex={1001}
 					/>
@@ -76,10 +81,10 @@ const CollectionDataInputModal = ({
 					<Text style={styles.textLanguageInfo}>{translate('pick_second_language', language)}:</Text>
 					<DropDownPicker
 						open={isSecondDropdownOpened}
-						value={collectionData.secondLanguage}
+						value={secondDropdownValue ?? null}
 						items={languageItems}
 						setOpen={setIsSecondDropdownOpened}
-						setValue={updateSecondLanguage}
+						setValue={setSecondDropdownValue}
 						setItems={setLanguageItems}
 						zIndex={1000}
 					/>
