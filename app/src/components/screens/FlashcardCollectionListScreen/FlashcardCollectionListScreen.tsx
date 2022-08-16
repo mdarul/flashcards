@@ -6,29 +6,30 @@ import DraggableFlatList, { RenderItemParams, ScaleDecorator } from 'react-nativ
 import { translate } from '../../../services/translationService';
 import ScreenWrapper from '../../shared/ScreenWrapper/ScreenWrapper';
 import BarButton from '../../shared/BarButton/BarButton';
-import styles from './CollectionListScreen.style';
+import styles from './FlashcardCollectionListScreen.style';
 import { RootState } from '../../../services/redux/store';
 import { spacing } from '../../../globalStyles';
-import CollectionDataInputModal from './CollectionDataInputModal/CollectionDataInputModal';
+import CollectionDataInputModal from './FlashcardCollectionDataInputModal/FlashcardCollectionDataInputModal';
 import {
 	createFlashcardCollection,
 	editFlascardCollection,
 	removeFlashcardCollection,
 	setFlashcardCollections,
 } from '../../../services/redux/slices/flashcardCollectionsSlice';
-import CollectionInfo from './CollectionInfo/CollectionInfo';
+import FlashcardCollectionInfo from './FlashcardCollectionInfo/FlashcardCollectionInfo';
 import ConfirmationModal from '../../shared/ConfirmationModal/ConfirmationModal';
 import FlashcardCollectionModel from '../../../models/dataModels/flashcardCollectionModel';
 import FlashcardCollectionCreateEditData from '../../../models/dataModels/flashcardCollectionCreateEditData';
 import Language from '../../../models/enums/language';
-import { emptyCollectionCreateEditData } from './CollectionListScreen.data';
+import { emptyFlashcardCollectionCreateEditData } from './FlashcardCollectionListScreen.data';
 import LanguagePickerBar from '../../shared/LanguagePickerBar/LanguagePickerBar';
 import NavigationProps from '../../../models/props/navigationProps';
 import Navigation from '../../../models/enums/navigation';
 
-const CollectionListScreen = ({ navigation }: NavigationProps) => {
-	const [collectionCreateEditData, setCollectionCreateEditData] =
-		useState<FlashcardCollectionCreateEditData>(emptyCollectionCreateEditData);
+const FlashcardCollectionListScreen = ({ navigation }: NavigationProps) => {
+	const [collectionCreateEditData, setCollectionCreateEditData] = useState<FlashcardCollectionCreateEditData>(
+		emptyFlashcardCollectionCreateEditData,
+	);
 	const [isCreateCollectionModalVisible, setIsCreateCollectionModalVisible] = useState(false);
 	const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
 	const [isEditCollectionModalVisible, setIsEditCollectionModalVisible] = useState(false);
@@ -108,7 +109,7 @@ const CollectionListScreen = ({ navigation }: NavigationProps) => {
 					delayLongPress={150}
 					onPress={() => navigation.navigate(Navigation.FlashcardCollectionScreen, { flashcardCollection: item })}
 				>
-					<CollectionInfo
+					<FlashcardCollectionInfo
 						flashcardCollection={item}
 						onDeletePressed={openDeleteCollectionModal}
 						onEditPressed={openEditCollectionModal}
@@ -167,4 +168,4 @@ const CollectionListScreen = ({ navigation }: NavigationProps) => {
 	);
 };
 
-export default CollectionListScreen;
+export default FlashcardCollectionListScreen;

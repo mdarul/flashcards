@@ -7,9 +7,9 @@ import { RootState } from '../../../../services/redux/store';
 import { shortLanguageToFullName, translate } from '../../../../services/translationService';
 import Button from '../../../shared/Button/Button';
 import { ButtonType } from '../../../shared/Button/Button.data';
-import styles from './CollectionDataInputModal.style';
+import styles from './FlashcardCollectionDataInputModal.style';
 import DropdownItem from '../../../../models/dataModels/dropdownItem';
-import { CollectionDataInputModalProps } from './CollectionDataInputModal.data';
+import { CollectionDataInputModalProps } from './FlashcardCollectionDataInputModal.data';
 import Language from '../../../../models/enums/language';
 
 const CollectionDataInputModal = ({

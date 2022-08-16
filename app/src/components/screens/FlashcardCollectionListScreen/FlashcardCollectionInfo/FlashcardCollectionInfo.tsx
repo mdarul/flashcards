@@ -1,10 +1,15 @@
 import { Text, TouchableOpacity, View, Image, ImageSourcePropType } from 'react-native';
 import { Feather, MaterialIcons } from '@expo/vector-icons';
-import styles from './CollectionInfo.style';
-import CollectionInfoProps from './CollectionInfo.data';
+import styles from './FlashcardCollectionInfo.style';
+import FlashcardCollectionInfoProps from './FlashcardCollectionInfo.data';
 import { languageToFlagImage } from '../../../../services/flagService';
 
-const CollectionInfo = ({ flashcardCollection, onDeletePressed, onEditPressed, style }: CollectionInfoProps) => {
+const FlashcardCollectionInfo = ({
+	flashcardCollection,
+	onDeletePressed,
+	onEditPressed,
+	style,
+}: FlashcardCollectionInfoProps) => {
 	return (
 		<View style={[styles.container, style]}>
 			<View style={styles.flagsContainer}>
@@ -35,4 +40,4 @@ const CollectionInfo = ({ flashcardCollection, onDeletePressed, onEditPressed, s
 	);
 };
 
-export default CollectionInfo;
+export default FlashcardCollectionInfo;

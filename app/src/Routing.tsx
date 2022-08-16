@@ -13,7 +13,7 @@ import StorageItemType from './models/enums/storageItemType';
 import { setFlashcardCollections } from './services/redux/slices/flashcardCollectionsSlice';
 import { getData, saveData } from './services/storage';
 import { RootState } from './services/redux/store';
-import CollectionListScreen from './components/screens/CollectionListScreen/CollectionListScreen';
+import FlashcardCollectionListScreen from './components/screens/FlashcardCollectionListScreen/FlashcardCollectionListScreen';
 import { standardFontSize } from './globalStyles';
 import Navigation from './models/enums/navigation';
 import FlashcardCollectionScreen from './components/screens/FlashcardCollectionScreen/FlashcardCollectionScreen';
@@ -72,7 +72,7 @@ const Routing = () => {
 					initialRouteName={Navigation.FlashcardCollectionListScreen}
 					screenOptions={{ headerShown: false }}
 				>
-					<Stack.Screen name={Navigation.FlashcardCollectionListScreen} component={CollectionListScreen} />
+					<Stack.Screen name={Navigation.FlashcardCollectionListScreen} component={FlashcardCollectionListScreen} />
 					<Stack.Screen name={Navigation.FlashcardCollectionScreen} component={FlashcardCollectionScreen} />
 				</Stack.Navigator>
 			</NavigationContainer>
