@@ -15,6 +15,8 @@ import { getData, saveData } from './services/storage';
 import { RootState } from './services/redux/store';
 import CollectionListScreen from './components/screens/CollectionListScreen/CollectionListScreen';
 import { standardFontSize } from './globalStyles';
+import Navigation from './models/enums/navigation';
+import FlashcardCollectionScreen from './components/screens/FlashcardCollectionScreen/FlashcardCollectionScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -66,8 +68,12 @@ const Routing = () => {
 	return (
 		<SafeAreaView style={{ flex: 1 }}>
 			<NavigationContainer>
-				<Stack.Navigator initialRouteName="CollectionListScreen" screenOptions={{ headerShown: false }}>
-					<Stack.Screen name="CollectionListScreen" component={CollectionListScreen} />
+				<Stack.Navigator
+					initialRouteName={Navigation.FlashcardCollectionListScreen}
+					screenOptions={{ headerShown: false }}
+				>
+					<Stack.Screen name={Navigation.FlashcardCollectionListScreen} component={CollectionListScreen} />
+					<Stack.Screen name={Navigation.FlashcardCollectionScreen} component={FlashcardCollectionScreen} />
 				</Stack.Navigator>
 			</NavigationContainer>
 		</SafeAreaView>

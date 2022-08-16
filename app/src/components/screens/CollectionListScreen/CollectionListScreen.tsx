@@ -23,8 +23,10 @@ import FlashcardCollectionCreateEditData from '../../../models/dataModels/flashc
 import Language from '../../../models/enums/language';
 import { emptyCollectionCreateEditData } from './CollectionListScreen.data';
 import LanguagePickerBar from '../../shared/LanguagePickerBar/LanguagePickerBar';
+import NavigationProps from '../../../models/props/navigationProps';
+import Navigation from '../../../models/enums/navigation';
 
-const CollectionListScreen = () => {
+const CollectionListScreen = ({ navigation }: NavigationProps) => {
 	const [collectionCreateEditData, setCollectionCreateEditData] =
 		useState<FlashcardCollectionCreateEditData>(emptyCollectionCreateEditData);
 	const [isCreateCollectionModalVisible, setIsCreateCollectionModalVisible] = useState(false);
@@ -100,7 +102,12 @@ const CollectionListScreen = () => {
 	const renderCollectionItem = ({ item, drag, isActive }: RenderItemParams<FlashcardCollectionModel>) => {
 		return (
 			<ScaleDecorator>
-				<TouchableOpacity onLongPress={drag} disabled={isActive} delayLongPress={120}>
+				<TouchableOpacity
+					onLongPress={drag}
+					disabled={isActive}
+					delayLongPress={150}
+					onPress={() => navigation.navigate(Navigation.FlashcardCollectionScreen, { flashcardCollection: item })}
+				>
 					<CollectionInfo
 						flashcardCollection={item}
 						onDeletePressed={openDeleteCollectionModal}

@@ -49,7 +49,8 @@
     "react/jsx-props-no-spreading": "off",
     "prefer-template": "off",
     "dot-notation": "off",
-    "no-unused-vars": ["error"],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error",
     "import/no-extraneous-dependencies": "off"
   }
 }
