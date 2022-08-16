@@ -169,15 +169,15 @@
         ]
     },
     {
-        "key": "start_classic_quiz",
+        "key": "start_quiz",
         "values": [
             {
                 "language": "en",
-                "value": "Start classic quiz"
+                "value": "Start quiz"
             },
             {
                 "language": "pl",
-                "value": "Rozpocznij klasyczny quiz"
+                "value": "Rozpocznij quiz"
             }
         ]
     },

@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useSelector } from 'react-redux';
 import { Ionicons } from '@expo/vector-icons';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { RootState } from '../../../services/redux/store';
 import { translate } from '../../../services/translationService';
 import BarButton from '../../shared/BarButton/BarButton';
@@ -9,18 +8,24 @@ import LanguagePickerBar from '../../shared/LanguagePickerBar/LanguagePickerBar'
 import ScreenWrapper from '../../shared/ScreenWrapper/ScreenWrapper';
 import styles from './FlashcardCollectionScreen.style';
 import { spacing } from '../../../globalStyles';
-import FlashcardCollectionScreenProps from './FlashcardCollectionScreen.data';
-import FlashcardCollectionModel from '../../../models/dataModels/flashcardCollectionModel';
 import Navigation from '../../../models/enums/navigation';
+import NavigationProps from '../../../models/props/navigationProps';
 
-const FlashcardCollectionScreen = ({ navigation, route }: FlashcardCollectionScreenProps) => {
-	// const [flashcardCollection, setFlashcardCollections] = useState<FlashcardCollectionModel | null>(null);
+const FlashcardCollectionScreen = ({ navigation }: NavigationProps) => {
 	const language = useSelector((state: RootState) => state.userSettingsReducers.language);
+	const selectedFlashcardCollection = useSelector(
+		(state: RootState) => state.flashcardCollectionsReducer.selectedFlashcardCollection,
+	);
+
+	const onAddFlashcardPressed = () => {
+		if (selectedFlashcardCollection) {
+			navigation.navigate(Navigation.AddFlashcardScreen, { flashcardCollection: selectedFlashcardCollection });
+		}
+	};
 
 	useEffect(() => {
-		console.log(route.params.flashcardCollection.flashcards.length);
-		// setFlashcardCollections(route.params.flashcardCollection);
-	}, [route]);
+		console.log(selectedFlashcardCollection?.flashcards.length);
+	}, [selectedFlashcardCollection]);
 
 	return (
 		<ScreenWrapper>
@@ -28,9 +33,7 @@ const FlashcardCollectionScreen = ({ navigation, route }: FlashcardCollectionScr
 
 			<BarButton
 				text={translate('add_flashcard', language)}
-				onPressed={() =>
-					navigation.navigate(Navigation.AddFlashcardScreen, { flashcardCollection: route.params.flashcardCollection })
-				}
+				onPressed={onAddFlashcardPressed}
 				icon={<Ionicons name="add-circle-outline" size={30} color="black" style={{ marginRight: spacing / 2 }} />}
 				style={[styles.buttonMarginY, styles.buttonHeight]}
 			/>
@@ -42,7 +45,7 @@ const FlashcardCollectionScreen = ({ navigation, route }: FlashcardCollectionScr
 			/>
 
 			<BarButton
-				text={translate('start_classic_quiz', language)}
+				text={translate('start_quiz', language)}
 				onPressed={() => null}
 				style={[styles.buttonMarginY, styles.buttonMarginTop, styles.buttonHeight]}
 			/>

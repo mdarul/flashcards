@@ -15,6 +15,7 @@ import {
 	editFlascardCollection,
 	removeFlashcardCollection,
 	setFlashcardCollections,
+	setSelectedFlashcardCollection,
 } from '../../../services/redux/slices/flashcardCollectionsSlice';
 import FlashcardCollectionInfo from './FlashcardCollectionInfo/FlashcardCollectionInfo';
 import ConfirmationModal from '../../shared/ConfirmationModal/ConfirmationModal';
@@ -100,6 +101,11 @@ const FlashcardCollectionListScreen = ({ navigation }: NavigationProps) => {
 		setIsEditCollectionModalVisible(false);
 	};
 
+	const onCollectionPressed = (flashcardCollection: FlashcardCollectionModel) => {
+		dispatch(setSelectedFlashcardCollection(flashcardCollection));
+		navigation.navigate(Navigation.FlashcardCollectionScreen);
+	};
+
 	const renderCollectionItem = ({ item, drag, isActive }: RenderItemParams<FlashcardCollectionModel>) => {
 		return (
 			<ScaleDecorator>
@@ -107,7 +113,7 @@ const FlashcardCollectionListScreen = ({ navigation }: NavigationProps) => {
 					onLongPress={drag}
 					disabled={isActive}
 					delayLongPress={150}
-					onPress={() => navigation.navigate(Navigation.FlashcardCollectionScreen, { flashcardCollection: item })}
+					onPress={() => onCollectionPressed(item)}
 				>
 					<FlashcardCollectionInfo
 						flashcardCollection={item}
