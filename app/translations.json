@@ -91,7 +91,7 @@
         ]
     },
     {
-        "key": "removeCollectionQuestion",
+        "key": "remove_collection_question",
         "values": [
             {
                 "language": "en",
@@ -104,7 +104,7 @@
         ]
     },
     {
-        "key": "pickFirstLanguage",
+        "key": "pick_first_language",
         "values": [
             {
                 "language": "en",
@@ -117,7 +117,7 @@
         ]
     },
     {
-        "key": "pickSecondLanguage",
+        "key": "pick_second_language",
         "values": [
             {
                 "language": "en",
@@ -126,6 +126,45 @@
             {
                 "language": "pl",
                 "value": "Wybierz drugi język"
+            }
+        ]
+    },
+    {
+        "key": "show_flashcard_list",
+        "values": [
+            {
+                "language": "en",
+                "value": "Show flashcard list"
+            },
+            {
+                "language": "pl",
+                "value": "Pokaż listę fiszek"
+            }
+        ]
+    },
+    {
+        "key": "start_classic_quiz",
+        "values": [
+            {
+                "language": "en",
+                "value": "Start classic quiz"
+            },
+            {
+                "language": "pl",
+                "value": "Rozpocznij klasyczny quiz"
+            }
+        ]
+    },
+    {
+        "key": "start_quiz_without_visible_answers",
+        "values": [
+            {
+                "language": "en",
+                "value": "Start quiz without visible answers"
+            },
+            {
+                "language": "pl",
+                "value": "Rozpocznij quiz bez widocznych odpowiedzi"
             }
         ]
     }

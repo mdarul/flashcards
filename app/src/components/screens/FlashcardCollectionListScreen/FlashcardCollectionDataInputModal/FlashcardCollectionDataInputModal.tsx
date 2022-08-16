@@ -62,7 +62,7 @@ const CollectionDataInputModal = ({
 						placeholder={translate('collection_name', language) + '...'}
 					/>
 
-					<Text style={styles.textLanguageInfo}>{translate('pickFirstLanguage', language)}:</Text>
+					<Text style={styles.textLanguageInfo}>{translate('pick_first_language', language)}:</Text>
 					<DropDownPicker
 						open={isFirstDropdownOpened}
 						value={collectionData.firstLanguage}
@@ -73,7 +73,7 @@ const CollectionDataInputModal = ({
 						zIndex={1001}
 					/>
 
-					<Text style={styles.textLanguageInfo}>{translate('pickSecondLanguage', language)}:</Text>
+					<Text style={styles.textLanguageInfo}>{translate('pick_second_language', language)}:</Text>
 					<DropDownPicker
 						open={isSecondDropdownOpened}
 						value={collectionData.secondLanguage}

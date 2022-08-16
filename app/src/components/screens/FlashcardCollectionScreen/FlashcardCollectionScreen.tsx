@@ -28,7 +28,25 @@ const FlashcardCollectionScreen = ({ navigation, route }: FlashcardCollectionScr
 				text={translate('add_flashcard', language)}
 				onPressed={() => null}
 				icon={<Ionicons name="add-circle-outline" size={30} color="black" style={{ marginRight: spacing / 2 }} />}
-				style={styles.addFlashcardContainer}
+				style={[styles.buttonMarginY, styles.buttonHeight]}
+			/>
+
+			<BarButton
+				text={translate('show_flashcard_list', language)}
+				onPressed={() => null}
+				style={[styles.buttonMarginY, styles.buttonMarginTop, styles.buttonHeight]}
+			/>
+
+			<BarButton
+				text={translate('start_classic_quiz', language)}
+				onPressed={() => null}
+				style={[styles.buttonMarginY, styles.buttonMarginTop, styles.buttonHeight]}
+			/>
+
+			<BarButton
+				text={translate('start_quiz_without_visible_answers', language)}
+				onPressed={() => null}
+				style={[styles.buttonMarginY, styles.buttonMarginTop, styles.buttonHeight]}
 			/>
 		</ScreenWrapper>
 	);

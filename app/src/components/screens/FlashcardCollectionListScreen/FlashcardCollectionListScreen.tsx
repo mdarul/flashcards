@@ -158,7 +158,7 @@ const FlashcardCollectionListScreen = ({ navigation }: NavigationProps) => {
 			/>
 
 			<ConfirmationModal
-				text={translate('removeCollectionQuestion', language)}
+				text={translate('remove_collection_question', language)}
 				isVisible={isDeleteModalVisible}
 				setIsVisible={setIsDeleteModalVisible}
 				onConfirm={deleteCollection}
