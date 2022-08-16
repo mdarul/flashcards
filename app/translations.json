@@ -130,6 +130,32 @@
         ]
     },
     {
+        "key": "enter_text",
+        "values": [
+            {
+                "language": "en",
+                "value": "Enter text"
+            },
+            {
+                "language": "pl",
+                "value": "Wpisz tekst"
+            }
+        ]
+    },
+    {
+        "key": "enter_translation",
+        "values": [
+            {
+                "language": "en",
+                "value": "Enter translation"
+            },
+            {
+                "language": "pl",
+                "value": "Wpisz tłumaczenie"
+            }
+        ]
+    },
+    {
         "key": "show_flashcard_list",
         "values": [
             {

@@ -11,13 +11,15 @@ import styles from './FlashcardCollectionScreen.style';
 import { spacing } from '../../../globalStyles';
 import FlashcardCollectionScreenProps from './FlashcardCollectionScreen.data';
 import FlashcardCollectionModel from '../../../models/dataModels/flashcardCollectionModel';
+import Navigation from '../../../models/enums/navigation';
 
 const FlashcardCollectionScreen = ({ navigation, route }: FlashcardCollectionScreenProps) => {
-	const [flashcardCollection, setFlashcardCollections] = useState<FlashcardCollectionModel | null>(null);
+	// const [flashcardCollection, setFlashcardCollections] = useState<FlashcardCollectionModel | null>(null);
 	const language = useSelector((state: RootState) => state.userSettingsReducers.language);
 
 	useEffect(() => {
-		setFlashcardCollections(route.params.flashcardCollection);
+		console.log(route.params.flashcardCollection.flashcards.length);
+		// setFlashcardCollections(route.params.flashcardCollection);
 	}, [route]);
 
 	return (
@@ -26,7 +28,9 @@ const FlashcardCollectionScreen = ({ navigation, route }: FlashcardCollectionScr
 
 			<BarButton
 				text={translate('add_flashcard', language)}
-				onPressed={() => null}
+				onPressed={() =>
+					navigation.navigate(Navigation.AddFlashcardScreen, { flashcardCollection: route.params.flashcardCollection })
+				}
 				icon={<Ionicons name="add-circle-outline" size={30} color="black" style={{ marginRight: spacing / 2 }} />}
 				style={[styles.buttonMarginY, styles.buttonHeight]}
 			/>

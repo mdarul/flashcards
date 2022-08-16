@@ -9,7 +9,7 @@ export const translate = (translationKey: string, language: Language): string =>
 	);
 };
 
-export const shortLanguageToFullName = (language: Language): LanguageFullName => {
+export const getLanguageFullName = (language: Language): LanguageFullName => {
 	switch (language) {
 		case Language.ENGLISH:
 			return LanguageFullName.ENGLISH;

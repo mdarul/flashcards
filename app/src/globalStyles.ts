@@ -1,3 +1,5 @@
+import { StyleSheet } from 'react-native';
+
 export const backgroundGradientStartColor = '#DCE35B';
 export const backgroundGradientEndColor = '#45B649';
 export const contentColor = '#Fbff74';
@@ -31,7 +33,7 @@ export const getPaddingsShorthand = (...values: number[]) => {
 		paddingRight: values.length === 1 ? values[0] : values[1],
 		paddingLeft: getPaddingLeft(),
 	};
-}
+};
 
 export const getMarginsShorthand = (...values: number[]) => {
 	function getMarginLeft() {
@@ -51,4 +53,12 @@ export const getMarginsShorthand = (...values: number[]) => {
 		marginRight: values.length === 1 ? values[0] : values[1],
 		marginLeft: getMarginLeft(),
 	};
-}
+};
+
+export const globalStyles = StyleSheet.create({
+	smallFlagImage: {
+		width: 28,
+		height: 14,
+		resizeMode: 'contain',
+	},
+});
