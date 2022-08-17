@@ -15,7 +15,7 @@ import {
 	editFlascardCollection,
 	removeFlashcardCollection,
 	setFlashcardCollections,
-	setSelectedFlashcardCollection,
+	setSelectedFlashcardCollectionId,
 } from '../../../services/redux/slices/flashcardCollectionsSlice';
 import FlashcardCollectionInfo from './FlashcardCollectionInfo/FlashcardCollectionInfo';
 import ConfirmationModal from '../../shared/ConfirmationModal/ConfirmationModal';
@@ -23,7 +23,6 @@ import FlashcardCollectionModel from '../../../models/dataModels/flashcardCollec
 import FlashcardCollectionCreateEditData from '../../../models/dataModels/flashcardCollectionCreateEditData';
 import Language from '../../../models/enums/language';
 import { emptyFlashcardCollectionCreateEditData } from './FlashcardCollectionListScreen.data';
-import LanguagePickerBar from '../../shared/LanguagePickerBar/LanguagePickerBar';
 import NavigationProps from '../../../models/props/navigationProps';
 import Navigation from '../../../models/enums/navigation';
 
@@ -102,7 +101,7 @@ const FlashcardCollectionListScreen = ({ navigation }: NavigationProps) => {
 	};
 
 	const onCollectionPressed = (flashcardCollection: FlashcardCollectionModel) => {
-		dispatch(setSelectedFlashcardCollection(flashcardCollection));
+		dispatch(setSelectedFlashcardCollectionId(flashcardCollection.id));
 		navigation.navigate(Navigation.FlashcardCollectionScreen);
 	};
 
@@ -128,8 +127,6 @@ const FlashcardCollectionListScreen = ({ navigation }: NavigationProps) => {
 
 	return (
 		<ScreenWrapper>
-			<LanguagePickerBar />
-
 			<BarButton
 				text={translate('add_collection', language)}
 				onPressed={() => setIsCreateCollectionModalVisible(true)}

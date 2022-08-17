@@ -4,5 +4,5 @@ import FlashcardCollectionModel from '../../../models/dataModels/flashcardCollec
 
 export default interface AddFlashcardScreenProps {
 	navigation: NativeStackNavigationProp<ParamListBase>;
-	route: RouteProp<{ params: { flashcardCollection: FlashcardCollectionModel } }>;
+	route: RouteProp<{ params: { flashcardCollection: FlashcardCollectionModel | null } }>;
 }

@@ -18,6 +18,7 @@ import { standardFontSize } from './globalStyles';
 import Navigation from './models/enums/navigation';
 import FlashcardCollectionScreen from './components/screens/FlashcardCollectionScreen/FlashcardCollectionScreen';
 import AddFlashcardScreen from './components/screens/AddFlashcardScreen/AddFlashcardScreen';
+import FlaschardListScreen from './components/screens/FlaschardListScreen/FlaschardListScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -76,6 +77,7 @@ const Routing = () => {
 					<Stack.Screen name={Navigation.FlashcardCollectionListScreen} component={FlashcardCollectionListScreen} />
 					<Stack.Screen name={Navigation.FlashcardCollectionScreen} component={FlashcardCollectionScreen} />
 					<Stack.Screen name={Navigation.AddFlashcardScreen} component={AddFlashcardScreen} />
+					<Stack.Screen name={Navigation.FlaschardListScreen} component={FlaschardListScreen} />
 				</Stack.Navigator>
 			</NavigationContainer>
 		</SafeAreaView>

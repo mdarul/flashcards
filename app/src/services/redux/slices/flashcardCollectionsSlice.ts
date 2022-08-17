@@ -11,12 +11,12 @@ export interface AddFlashcardToCollectionPayload {
 
 interface FlashcardCollections {
 	flashcardCollections: FlashcardCollectionModel[];
-	selectedFlashcardCollection: FlashcardCollectionModel | null;
+	selectedFlashcardCollectionId: number | null;
 }
 
 const initialState: FlashcardCollections = {
 	flashcardCollections: [],
-	selectedFlashcardCollection: null,
+	selectedFlashcardCollectionId: null,
 };
 
 export const flashcardCollectionsSlice = createSlice({
@@ -26,8 +26,8 @@ export const flashcardCollectionsSlice = createSlice({
 		setFlashcardCollections: (state, action: PayloadAction<FlashcardCollectionModel[]>) => {
 			state.flashcardCollections = action.payload;
 		},
-		setSelectedFlashcardCollection: (state, action: PayloadAction<FlashcardCollectionModel>) => {
-			state.selectedFlashcardCollection = action.payload;
+		setSelectedFlashcardCollectionId: (state, action: PayloadAction<number>) => {
+			state.selectedFlashcardCollectionId = action.payload;
 		},
 		createFlashcardCollection: (state, action: PayloadAction<FlashcardCollectionCreateEditData>) => {
 			const ids = state.flashcardCollections.map(o => o.id);
@@ -62,7 +62,7 @@ export const flashcardCollectionsSlice = createSlice({
 
 export const {
 	setFlashcardCollections,
-	setSelectedFlashcardCollection,
+	setSelectedFlashcardCollectionId,
 	createFlashcardCollection,
 	removeFlashcardCollection,
 	addFlashcardToCollection,

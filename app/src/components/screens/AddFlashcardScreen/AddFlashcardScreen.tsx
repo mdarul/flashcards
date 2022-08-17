@@ -17,14 +17,20 @@ const AddFlashcardScreen = ({ navigation, route }: AddFlashcardScreenProps) => {
 	const dispatch = useDispatch();
 
 	const addFlashcard = () => {
-		dispatch(
-			addFlashcardToCollection({
-				flashcard: { text, translatedText },
-				flashcardCollection: route.params.flashcardCollection,
-			}),
-		);
-		navigation.goBack();
+		if (route.params.flashcardCollection) {
+			dispatch(
+				addFlashcardToCollection({
+					flashcard: { text, translatedText },
+					flashcardCollection: route.params.flashcardCollection,
+				}),
+			);
+			navigation.goBack();
+		}
 	};
+
+	if (!route.params.flashcardCollection) {
+		return <ScreenWrapper />;
+	}
 
 	return (
 		<ScreenWrapper style={styles.screenWrapper}>
