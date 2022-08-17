@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { Ionicons } from '@expo/vector-icons';
-import { useEffect } from 'react';
 import { RootState } from '../../../services/redux/store';
 import { translate } from '../../../services/translationService';
 import BarButton from '../../shared/BarButton/BarButton';
@@ -23,10 +22,6 @@ const FlashcardCollectionScreen = ({ navigation }: NavigationProps) => {
 		}
 	};
 
-	useEffect(() => {
-		console.log(selectedFlashcardCollection?.flashcards.length);
-	}, [selectedFlashcardCollection]);
-
 	return (
 		<ScreenWrapper>
 			<LanguagePickerBar />
@@ -39,7 +34,12 @@ const FlashcardCollectionScreen = ({ navigation }: NavigationProps) => {
 			/>
 
 			<BarButton
-				text={translate('show_flashcard_list', language)}
+				text={
+					translate('show_flashcard_list', language) +
+					' (' +
+					(selectedFlashcardCollection?.flashcards.length ?? 0) +
+					')'
+				}
 				onPressed={() => null}
 				style={[styles.buttonMarginY, styles.buttonMarginTop, styles.buttonHeight]}
 			/>
