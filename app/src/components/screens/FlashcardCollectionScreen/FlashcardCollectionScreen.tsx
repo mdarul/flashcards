@@ -25,7 +25,7 @@ const FlashcardCollectionScreen = ({ navigation }: NavigationProps) => {
 	}, [flashcardCollections, selectedFlashcardCollectionId]);
 
 	return (
-		<ScreenWrapper>
+		<ScreenWrapper showBackArrow navigation={navigation}>
 			<BarButton
 				text={translate('add_flashcard', language)}
 				onPressed={() =>

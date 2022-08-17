@@ -12,7 +12,7 @@ import { spacing } from '../../../globalStyles';
 import CollectionDataInputModal from './FlashcardCollectionDataInputModal/FlashcardCollectionDataInputModal';
 import {
 	createFlashcardCollection,
-	editFlascardCollection,
+	editFlashcardCollection,
 	removeFlashcardCollection,
 	setFlashcardCollections,
 	setSelectedFlashcardCollectionId,
@@ -87,7 +87,7 @@ const FlashcardCollectionListScreen = ({ navigation }: NavigationProps) => {
 
 	const editCollection = () => {
 		if (selectedCollection) {
-			dispatch(editFlascardCollection({ ...selectedCollection, ...collectionCreateEditData }));
+			dispatch(editFlashcardCollection({ ...selectedCollection, ...collectionCreateEditData }));
 			setIsCreateCollectionModalVisible(false);
 		}
 		clearCollectionEditData();

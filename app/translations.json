@@ -104,6 +104,19 @@
         ]
     },
     {
+        "key": "remove_flashcard_question",
+        "values": [
+            {
+                "language": "en",
+                "value": "Are you sure you want to remove the flashcard?"
+            },
+            {
+                "language": "pl",
+                "value": "Czy na pewno chcesz usunąć fiszkę?"
+            }
+        ]
+    },
+    {
         "key": "pick_first_language",
         "values": [
             {

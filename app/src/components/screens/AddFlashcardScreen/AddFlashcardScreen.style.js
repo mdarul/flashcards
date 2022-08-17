@@ -3,7 +3,7 @@ import { getPaddingsShorthand, spacing } from '../../../globalStyles';
 
 const styles = StyleSheet.create({
 	screenWrapper: {
-		...getPaddingsShorthand(spacing * 2.5),
+		...getPaddingsShorthand(0, spacing * 2.5, spacing * 2.5),
 	},
 });
 

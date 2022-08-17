@@ -4,7 +4,7 @@ import FlashcardCollectionCreateEditData from '../../../models/dataModels/flashc
 import FlashcardCollectionModel from '../../../models/dataModels/flashcardCollectionModel';
 import FlashcardModel from '../../../models/dataModels/flashcardModel';
 
-export interface AddFlashcardToCollectionPayload {
+export interface FlashcardAndCollectionPayload {
 	flashcard: FlashcardModel;
 	flashcardCollection: FlashcardCollectionModel;
 }
@@ -43,13 +43,28 @@ export const flashcardCollectionsSlice = createSlice({
 		removeFlashcardCollection: (state, action: PayloadAction<number>) => {
 			state.flashcardCollections = state.flashcardCollections.filter(o => o.id !== action.payload);
 		},
-		addFlashcardToCollection: (state, action: PayloadAction<AddFlashcardToCollectionPayload>) => {
+		addFlashcardToCollection: (state, action: PayloadAction<FlashcardAndCollectionPayload>) => {
 			state.flashcardCollections
 				.find(collection => collection.id === action.payload.flashcardCollection.id)
 				?.flashcards.push(action.payload.flashcard);
 			return state;
 		},
-		editFlascardCollection: (state, action: PayloadAction<FlashcardCollectionModel>) => {
+		removeFlashcardFromCollection: (state, action: PayloadAction<FlashcardAndCollectionPayload>) => {
+			const flashcardCollectionIndex = state.flashcardCollections.findIndex(
+				o => o.id === action.payload.flashcardCollection.id,
+			);
+
+			if (flashcardCollectionIndex !== -1) {
+				state.flashcardCollections[flashcardCollectionIndex].flashcards = state.flashcardCollections[
+					flashcardCollectionIndex
+				].flashcards.filter(
+					o => o.text !== action.payload.flashcard.text || o.translatedText !== action.payload.flashcard.translatedText,
+				);
+			}
+
+			return state;
+		},
+		editFlashcardCollection: (state, action: PayloadAction<FlashcardCollectionModel>) => {
 			const element = state.flashcardCollections.find(o => o.id === action.payload.id);
 			if (element) {
 				const index = state.flashcardCollections.indexOf(element);
@@ -64,9 +79,10 @@ export const {
 	setFlashcardCollections,
 	setSelectedFlashcardCollectionId,
 	createFlashcardCollection,
+	editFlashcardCollection,
 	removeFlashcardCollection,
 	addFlashcardToCollection,
-	editFlascardCollection,
+	removeFlashcardFromCollection,
 } = flashcardCollectionsSlice.actions;
 
 export default flashcardCollectionsSlice.reducer;

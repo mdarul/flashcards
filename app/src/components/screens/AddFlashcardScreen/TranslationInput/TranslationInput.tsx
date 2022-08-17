@@ -13,7 +13,13 @@ const TranslationInput = ({ text, setText, language, style, placeholder }: Trans
 				<Image source={languageToFlagImage(language) as ImageSourcePropType} style={globalStyles.smallFlagImage} />
 				<Text style={styles.languageText}>{getLanguageFullName(language)}</Text>
 			</View>
-			<TextInput onChangeText={setText} value={text} style={styles.textInput} placeholder={placeholder} />
+			<TextInput
+				onChangeText={setText}
+				value={text}
+				style={styles.textInput}
+				placeholder={placeholder}
+				autoCapitalize="none"
+			/>
 		</View>
 	);
 };

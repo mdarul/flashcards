@@ -6,7 +6,9 @@ import FlashcardInfoProps from './FlashcardInfo.data';
 const FlashcardInfo = ({ flashcard, onDeletePressed, onEditPressed, style }: FlashcardInfoProps) => {
 	return (
 		<View style={[styles.container, style]}>
-			<Text style={styles.collectionNameText}>{flashcard.text}</Text>
+			<Text style={styles.collectionNameText}>
+				{flashcard.text}: {flashcard.translatedText}
+			</Text>
 
 			<View style={styles.icons}>
 				<TouchableOpacity style={styles.iconWrapper} onPress={() => onEditPressed(flashcard)}>

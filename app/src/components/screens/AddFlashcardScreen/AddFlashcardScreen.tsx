@@ -33,7 +33,7 @@ const AddFlashcardScreen = ({ navigation, route }: AddFlashcardScreenProps) => {
 	}
 
 	return (
-		<ScreenWrapper style={styles.screenWrapper}>
+		<ScreenWrapper style={styles.screenWrapper} showBackArrow navigation={navigation}>
 			<TranslationInput
 				text={text}
 				setText={setText}

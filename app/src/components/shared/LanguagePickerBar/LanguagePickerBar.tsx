@@ -1,17 +1,18 @@
 import { Image, ImageSourcePropType, TouchableOpacity, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import Language from '../../../models/enums/language';
+import StyleProps from '../../../models/props/styleProps';
 import { languageToFlagImage } from '../../../services/flagService';
 import { setLanguage } from '../../../services/redux/slices/userSettingsSlice';
 import { RootState } from '../../../services/redux/store';
 import styles from './LanguagePickerBar.style';
 
-const LanguagePickerBar = () => {
+const LanguagePickerBar = ({ style }: StyleProps) => {
 	const dispatch = useDispatch();
 	const language = useSelector((rootState: RootState) => rootState.userSettingsReducers.language);
 
 	return (
-		<View style={styles.flagsContainer}>
+		<View style={[styles.flagsContainer, style]}>
 			<TouchableOpacity onPress={() => dispatch(setLanguage(Language.ENGLISH))} style={styles.languageContainer}>
 				<Image
 					source={languageToFlagImage(Language.ENGLISH) as ImageSourcePropType}
