@@ -10,6 +10,7 @@ import { RootState } from '../../../services/redux/store';
 import { translate } from '../../../services/translationService';
 import ConfirmationModal from '../../shared/ConfirmationModal/ConfirmationModal';
 import ScreenWrapper from '../../shared/ScreenWrapper/ScreenWrapper';
+import styles from './FlaschardListScreen.style';
 import FlashcardInfo from './FlashcardInfo/FlashcardInfo';
 
 const FlaschardListScreen = ({ navigation }: NavigationProps) => {
@@ -67,6 +68,7 @@ const FlaschardListScreen = ({ navigation }: NavigationProps) => {
 		<ScreenWrapper showBackArrow navigation={navigation}>
 			<FlatList
 				data={selectedFlashcardCollection?.flashcards ?? []}
+				style={styles.listContainer}
 				renderItem={o => renderFlashcard(o.item)}
 				keyExtractor={(item, i) => item.text + i}
 			/>

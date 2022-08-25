@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
 		...getMarginsShorthand(0, spacing * 2.5),
 	},
 	collectionsContainer: {
-		...getMarginsShorthand(spacing * 2, 0, spacing * 15),
+		...getMarginsShorthand(spacing * 2, 0, spacing * 23), // TODO figure out what's going on with flatlist cut
 	},
 });
 
