@@ -5,10 +5,10 @@ import { RootState } from '../../../../services/redux/store';
 import { translate } from '../../../../services/translationService';
 import Button from '../../../shared/Button/Button';
 import { ButtonType } from '../../../shared/Button/Button.data';
-import styles from './FlashcardDataEditModal.style';
 import { FlashcardDataEditModalProps } from './FlashcardDataEditModal.data';
+import styles from './FlashcardDataEditModal.style';
 
-const CollectionDataInputModal = ({
+const FlashcardDataEditModal = ({
 	isVisible,
 	setIsVisible,
 	flashcard,
@@ -30,16 +30,16 @@ const CollectionDataInputModal = ({
 			<View style={styles.centeredView}>
 				<View style={styles.modalView}>
 					<TextInput
-						style={styles.modalTextInput}
-						value={flashcard.text}
-						onChangeText={text => setFlashcard(prev => ({ ...prev, text }))}
+						style={[styles.modalTextInput, { marginBottom: spacing * 3 }]}
+						value={flashcard?.text ?? ''}
+						onChangeText={text => setFlashcard(prev => (prev ? { ...prev, text } : null))}
 						placeholder={translate('enter_text', language) + '...'}
 					/>
 
 					<TextInput
 						style={styles.modalTextInput}
-						value={flashcard.text}
-						onChangeText={text => setFlashcard(prev => ({ ...prev, translatedText: text }))}
+						value={flashcard?.translatedText ?? ''}
+						onChangeText={text => setFlashcard(prev => (prev ? { ...prev, translatedText: text } : null))}
 						placeholder={translate('enter_translation', language) + '...'}
 					/>
 
@@ -58,4 +58,4 @@ const CollectionDataInputModal = ({
 	);
 };
 
-export default CollectionDataInputModal;
+export default FlashcardDataEditModal;

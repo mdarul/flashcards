@@ -2,10 +2,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import FlashcardCollectionCreateEditData from '../../../models/dataModels/flashcardCollectionCreateEditData';
 import FlashcardCollectionModel from '../../../models/dataModels/flashcardCollectionModel';
-import FlashcardModel from '../../../models/dataModels/flashcardModel';
+import FlashcardModel, { FlashcardModelDto } from '../../../models/dataModels/flashcardModel';
 
 export interface FlashcardAndCollectionPayload {
 	flashcard: FlashcardModel;
+	flashcardCollection: FlashcardCollectionModel;
+}
+
+export interface FlashcardDtoAndCollectionPayload {
+	flashcardDto: FlashcardModelDto;
 	flashcardCollection: FlashcardCollectionModel;
 }
 
@@ -43,10 +48,20 @@ export const flashcardCollectionsSlice = createSlice({
 		removeFlashcardCollection: (state, action: PayloadAction<number>) => {
 			state.flashcardCollections = state.flashcardCollections.filter(o => o.id !== action.payload);
 		},
-		addFlashcardToCollection: (state, action: PayloadAction<FlashcardAndCollectionPayload>) => {
+		editFlashcardCollection: (state, action: PayloadAction<FlashcardCollectionModel>) => {
+			const element = state.flashcardCollections.find(o => o.id === action.payload.id);
+			if (element) {
+				const index = state.flashcardCollections.indexOf(element);
+				state.flashcardCollections[index] = action.payload;
+			}
+			return state;
+		},
+		addFlashcardToCollection: (state, action: PayloadAction<FlashcardDtoAndCollectionPayload>) => {
+			const ids = state.flashcardCollections.flatMap(o => o.flashcards).map(o => o.id);
+			const newId = ids.length ? Math.max(...ids) + 1 : 0;
 			state.flashcardCollections
 				.find(collection => collection.id === action.payload.flashcardCollection.id)
-				?.flashcards.push(action.payload.flashcard);
+				?.flashcards.push({ ...action.payload.flashcardDto, id: newId });
 			return state;
 		},
 		removeFlashcardFromCollection: (state, action: PayloadAction<FlashcardAndCollectionPayload>) => {
@@ -64,11 +79,11 @@ export const flashcardCollectionsSlice = createSlice({
 
 			return state;
 		},
-		editFlashcardCollection: (state, action: PayloadAction<FlashcardCollectionModel>) => {
-			const element = state.flashcardCollections.find(o => o.id === action.payload.id);
+		editFlashcardInCollection: (state, action: PayloadAction<FlashcardAndCollectionPayload>) => {
+			const element = state.flashcardCollections.flatMap(o => o.flashcards).find(o => o.id === action.payload.flashcard.id);
 			if (element) {
-				const index = state.flashcardCollections.indexOf(element);
-				state.flashcardCollections[index] = action.payload;
+				element.text = action.payload.flashcard.text;
+				element.translatedText = action.payload.flashcard.translatedText;
 			}
 			return state;
 		},
@@ -83,6 +98,7 @@ export const {
 	removeFlashcardCollection,
 	addFlashcardToCollection,
 	removeFlashcardFromCollection,
+	editFlashcardInCollection,
 } = flashcardCollectionsSlice.actions;
 
 export default flashcardCollectionsSlice.reducer;

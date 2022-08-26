@@ -24,9 +24,10 @@ const styles = StyleSheet.create({
 		...getPaddingsShorthand(spacing * 3, spacing * 2, spacing * 3, spacing),
 	},
 	collectionNameText: {
-		flexGrow: 1,
+		flexShrink: 1,
 		fontFamily: 'Lato_700Bold',
 		fontSize: largeFontSize,
+
 		...getPaddingsShorthand(spacing * 3, spacing * 2),
 	},
 });

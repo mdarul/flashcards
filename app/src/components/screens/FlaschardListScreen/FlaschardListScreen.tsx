@@ -5,18 +5,23 @@ import { spacing } from '../../../globalStyles';
 import FlashcardCollectionModel from '../../../models/dataModels/flashcardCollectionModel';
 import FlashcardModel from '../../../models/dataModels/flashcardModel';
 import NavigationProps from '../../../models/props/navigationProps';
-import { removeFlashcardFromCollection } from '../../../services/redux/slices/flashcardCollectionsSlice';
+import {
+	editFlashcardInCollection,
+	removeFlashcardFromCollection,
+} from '../../../services/redux/slices/flashcardCollectionsSlice';
 import { RootState } from '../../../services/redux/store';
 import { translate } from '../../../services/translationService';
 import ConfirmationModal from '../../shared/ConfirmationModal/ConfirmationModal';
 import ScreenWrapper from '../../shared/ScreenWrapper/ScreenWrapper';
 import styles from './FlaschardListScreen.style';
+import FlashcardDataEditModal from './FlashcardDataEditModal/FlashcardDataEditModal';
 import FlashcardInfo from './FlashcardInfo/FlashcardInfo';
 
 const FlaschardListScreen = ({ navigation }: NavigationProps) => {
 	const [selectedFlashcardCollection, setSelectedFlashcardCollection] = useState<FlashcardCollectionModel | null>(null);
 	const [selectedFlashcard, setSelectedFlashcard] = useState<FlashcardModel | null>(null);
 	const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
+	const [isEditModalVisible, setIsEditModalVisible] = useState(false);
 
 	const selectedFlashcardCollectionId = useSelector(
 		(state: RootState) => state.flashcardCollectionsReducer.selectedFlashcardCollectionId,
@@ -39,12 +44,32 @@ const FlaschardListScreen = ({ navigation }: NavigationProps) => {
 		setIsDeleteModalVisible(false);
 	};
 
+	const openEditFlashcardModal = (flashcard: FlashcardModel) => {
+		setSelectedFlashcard(flashcard);
+		setIsEditModalVisible(true);
+	};
+
+	const closeEditFlashcardModal = () => {
+		setSelectedFlashcard(null);
+		setIsEditModalVisible(false);
+	};
+
 	const deleteFlashcard = () => {
 		if (selectedFlashcard && selectedFlashcardCollection) {
 			dispatch(
 				removeFlashcardFromCollection({ flashcard: selectedFlashcard, flashcardCollection: selectedFlashcardCollection }),
 			);
 			setIsDeleteModalVisible(false);
+			setSelectedFlashcard(null);
+		}
+	};
+
+	const editFlashcard = () => {
+		if (selectedFlashcard && selectedFlashcardCollection) {
+			dispatch(
+				editFlashcardInCollection({ flashcard: selectedFlashcard, flashcardCollection: selectedFlashcardCollection }),
+			);
+			setIsEditModalVisible(false);
 			setSelectedFlashcard(null);
 		}
 	};
@@ -58,7 +83,7 @@ const FlaschardListScreen = ({ navigation }: NavigationProps) => {
 			<FlashcardInfo
 				flashcard={flashcard}
 				onDeletePressed={() => openDeleteFlashcardModal(flashcard)}
-				onEditPressed={() => null}
+				onEditPressed={() => openEditFlashcardModal(flashcard)}
 				style={{ width: Dimensions.get('window').width - 5 * spacing, alignSelf: 'center' }}
 			/>
 		);
@@ -79,6 +104,15 @@ const FlaschardListScreen = ({ navigation }: NavigationProps) => {
 				setIsVisible={setIsDeleteModalVisible}
 				onConfirm={deleteFlashcard}
 				onCancel={closeDeleteFlashcardModal}
+			/>
+
+			<FlashcardDataEditModal
+				isVisible={isEditModalVisible}
+				setIsVisible={setIsEditModalVisible}
+				flashcard={selectedFlashcard}
+				setFlashcard={setSelectedFlashcard}
+				onSave={editFlashcard}
+				onClose={closeEditFlashcardModal}
 			/>
 		</ScreenWrapper>
 	);

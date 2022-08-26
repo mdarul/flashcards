@@ -20,7 +20,7 @@ const AddFlashcardScreen = ({ navigation, route }: AddFlashcardScreenProps) => {
 		if (route.params.flashcardCollection) {
 			dispatch(
 				addFlashcardToCollection({
-					flashcard: { text, translatedText },
+					flashcardDto: { text, translatedText },
 					flashcardCollection: route.params.flashcardCollection,
 				}),
 			);

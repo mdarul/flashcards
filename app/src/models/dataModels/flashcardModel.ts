@@ -1,8 +1,10 @@
-// import TextWithLanguagePair from "./textWithLanguagePair";
-
 export default interface FlashcardModel {
-	// text: TextWithLanguagePair;
-	// translatedText: TextWithLanguagePair;
+	id: number;
+	text: string;
+	translatedText: string;
+}
+
+export interface FlashcardModelDto {
 	text: string;
 	translatedText: string;
 }
