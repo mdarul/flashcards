@@ -43,7 +43,7 @@ const FlashcardCollectionScreen = ({ navigation }: NavigationProps) => {
 
 			<BarButton
 				text={translate('start_quiz', language)}
-				onPressed={() => null}
+				onPressed={() => navigation.navigate(Navigation.QuizScreen)}
 				style={[styles.buttonMarginY, styles.buttonMarginTop, styles.buttonHeight]}
 			/>
 

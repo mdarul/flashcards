@@ -19,6 +19,7 @@ import Navigation from './models/enums/navigation';
 import FlashcardCollectionScreen from './components/screens/FlashcardCollectionScreen/FlashcardCollectionScreen';
 import AddFlashcardScreen from './components/screens/AddFlashcardScreen/AddFlashcardScreen';
 import FlaschardListScreen from './components/screens/FlaschardListScreen/FlaschardListScreen';
+import QuizScreen from './components/screens/QuizScreen/QuizScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -78,6 +79,7 @@ const Routing = () => {
 					<Stack.Screen name={Navigation.FlashcardCollectionScreen} component={FlashcardCollectionScreen} />
 					<Stack.Screen name={Navigation.AddFlashcardScreen} component={AddFlashcardScreen} />
 					<Stack.Screen name={Navigation.FlaschardListScreen} component={FlaschardListScreen} />
+					<Stack.Screen name={Navigation.QuizScreen} component={QuizScreen} />
 				</Stack.Navigator>
 			</NavigationContainer>
 		</SafeAreaView>

@@ -3,6 +3,7 @@ enum Navigation {
 	FlashcardCollectionScreen = 'FlashcardCollectionScreen',
 	AddFlashcardScreen = 'AddFlashcardScreen',
 	FlaschardListScreen = 'FlaschardListScreen',
+	QuizScreen = 'QuizScreen',
 }
 
 export default Navigation;
