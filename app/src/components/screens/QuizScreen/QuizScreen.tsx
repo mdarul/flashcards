@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react';
 import { Image, ImageSourcePropType, View } from 'react-native';
 import { useSelector } from 'react-redux';
@@ -8,9 +9,13 @@ import { RootState } from '../../../services/redux/store';
 import ScreenWrapper from '../../shared/ScreenWrapper/ScreenWrapper';
 import styles from './QuizScreen.style';
 import { languageToFlagImage } from '../../../services/flagService';
+import FlashcardModel from '../../../models/dataModels/flashcardModel';
 
 const QuizScreen = ({ navigation }: NavigationProps) => {
 	const [flashcardCollection, setFlashcardCollection] = useState<FlashcardCollectionModel | null>(null);
+	const [shuffledFlashcards, setShuffledFlashcards] = useState<FlashcardModel[]>([]);
+	const [currentItemIndex, setCurrentItemIndex] = useState(0);
+
 	const flashcardCollections = useSelector((state: RootState) => state.flashcardCollectionsReducer.flashcardCollections);
 	const selectedFlashcardCollectionId = useSelector(
 		(state: RootState) => state.flashcardCollectionsReducer.selectedFlashcardCollectionId,
@@ -21,7 +26,19 @@ const QuizScreen = ({ navigation }: NavigationProps) => {
 	}, [flashcardCollections, selectedFlashcardCollectionId]);
 
 	useEffect(() => {
-		// shuffle
+		if (flashcardCollection) {
+			const { flashcards } = flashcardCollection;
+
+			for (let i = flashcards.length - 1; i >= 0; i -= 1) {
+				const indexToSwap = Math.floor(Math.random() * i);
+				const tmp = flashcards[i];
+				flashcards[i] = flashcards[indexToSwap];
+				flashcards[indexToSwap] = tmp;
+			}
+
+			setShuffledFlashcards(flashcards);
+			setCurrentItemIndex(0);
+		}
 	}, [flashcardCollection]);
 
 	if (!flashcardCollection) {
