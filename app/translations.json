@@ -206,5 +206,18 @@
                 "value": "Rozpocznij quiz bez widocznych odpowiedzi"
             }
         ]
+    },
+    {
+        "key": "quiz_done_congratulations",
+        "values": [
+            {
+                "language": "en",
+                "value": "You've done the quiz, good job!"
+            },
+            {
+                "language": "pl",
+                "value": "Ukończyłeś quiz, dobra robota!"
+            }
+        ]
     }
 ]
