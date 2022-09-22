@@ -1,12 +1,13 @@
 import { Modal, TextInput, View } from 'react-native';
 import { useSelector } from 'react-redux';
-import { spacing } from '../../../../globalStyles';
-import { RootState } from '../../../../services/redux/store';
-import { translate } from '../../../../services/translationService';
-import Button from '../../../shared/Button/Button';
-import { ButtonType } from '../../../shared/Button/Button.data';
-import { FlashcardDataEditModalProps } from './FlashcardDataEditModal.data';
+import { spacing } from '@globalStyles';
+import { translate } from '@services/translationService';
+import { RootState } from '@services/redux';
+import React from 'react';
+import { Button } from '@components/shared';
+import { ButtonType } from '@models/enums';
 import styles from './FlashcardDataEditModal.style';
+import { FlashcardDataEditModalProps } from './FlashcardDataEditModal.data';
 
 const FlashcardDataEditModal = ({
 	isVisible,

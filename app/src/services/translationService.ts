@@ -1,6 +1,5 @@
+import { Language, LanguageFullName } from '@models/enums';
 import translations from '../../translations.json';
-import Language from '../models/enums/language';
-import LanguageFullName from '../models/enums/languageFullName';
 
 export const translate = (translationKey: string, language: Language): string => {
 	return (

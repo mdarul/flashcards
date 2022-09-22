@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { getMarginsShorthand, spacing } from '../../../globalStyles';
+import { getMarginsShorthand, spacing } from '@globalStyles';
 
 const styles = StyleSheet.create({
 	listContainer: {

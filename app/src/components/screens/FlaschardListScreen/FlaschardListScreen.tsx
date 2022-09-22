@@ -1,18 +1,12 @@
+import { FlashcardCollectionModel, FlashcardModel } from '@models/dataModels';
+import { NavigationProps } from '@models/props';
 import React, { useEffect, useState } from 'react';
 import { Dimensions, FlatList } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { spacing } from '../../../globalStyles';
-import FlashcardCollectionModel from '../../../models/dataModels/flashcardCollectionModel';
-import FlashcardModel from '../../../models/dataModels/flashcardModel';
-import NavigationProps from '../../../models/props/navigationProps';
-import {
-	editFlashcardInCollection,
-	removeFlashcardFromCollection,
-} from '../../../services/redux/slices/flashcardCollectionsSlice';
-import { RootState } from '../../../services/redux/store';
-import { translate } from '../../../services/translationService';
-import ConfirmationModal from '../../shared/ConfirmationModal/ConfirmationModal';
-import ScreenWrapper from '../../shared/ScreenWrapper/ScreenWrapper';
+import { spacing } from '@globalStyles';
+import { editFlashcardInCollection, removeFlashcardFromCollection, RootState } from '@services/redux';
+import { translate } from '@services/translationService';
+import { ConfirmationModal, ScreenWrapper } from '@components/shared';
 import styles from './FlaschardListScreen.style';
 import FlashcardDataEditModal from './FlashcardDataEditModal/FlashcardDataEditModal';
 import FlashcardInfo from './FlashcardInfo/FlashcardInfo';

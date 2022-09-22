@@ -1,5 +1,5 @@
 import { Dimensions, StyleSheet } from 'react-native';
-import { getPaddingsShorthand, smallFontSize, spacing } from '../../../../globalStyles';
+import { getPaddingsShorthand, smallFontSize, spacing } from '@globalStyles';
 
 const styles = StyleSheet.create({
 	centeredView: {

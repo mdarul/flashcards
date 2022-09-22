@@ -1,4 +1,4 @@
-import FlashcardCollectionCreateEditData from '../../../../models/dataModels/flashcardCollectionCreateEditData';
+import { FlashcardCollectionCreateEditData } from '@models/dataModels';
 
 export interface CollectionDataInputModalProps {
 	isVisible: boolean;

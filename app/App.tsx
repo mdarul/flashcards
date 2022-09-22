@@ -1,6 +1,6 @@
 import { Provider } from 'react-redux';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import store from './src/services/redux/store';
+import { store } from '@services/redux';
 import Routing from './src/Routing';
 
 const App = () => {

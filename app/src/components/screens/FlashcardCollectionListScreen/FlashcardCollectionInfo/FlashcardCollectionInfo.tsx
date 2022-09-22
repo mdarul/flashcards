@@ -1,8 +1,8 @@
 import { Text, TouchableOpacity, View, Image, ImageSourcePropType } from 'react-native';
 import { Feather, MaterialIcons } from '@expo/vector-icons';
+import { languageToFlagImage } from '@services/flagService';
 import styles from './FlashcardCollectionInfo.style';
 import FlashcardCollectionInfoProps from './FlashcardCollectionInfo.data';
-import { languageToFlagImage } from '../../../../services/flagService';
 
 const FlashcardCollectionInfo = ({
 	flashcardCollection,

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Modal, Text, View } from 'react-native';
 import { useSelector } from 'react-redux';
-import { spacing } from '../../../globalStyles';
-import { RootState } from '../../../services/redux/store';
-import { translate } from '../../../services/translationService';
+import { spacing } from '@globalStyles';
+import { RootState } from '@services/redux';
+import { translate } from '@services/translationService';
+import { ButtonType } from '@models/enums';
 import Button from '../Button/Button';
-import { ButtonType } from '../Button/Button.data';
 import ConfirmationModalProps from './ConfirmationModal.data';
 import styles from './ConfirmationModal.style';
 

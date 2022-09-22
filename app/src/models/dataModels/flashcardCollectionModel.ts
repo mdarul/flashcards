@@ -1,7 +1,7 @@
-import Language from '../enums/language';
-import FlashcardModel from './flashcardModel';
+import { Language } from '../enums/language';
+import { FlashcardModel } from './flashcardModel';
 
-export default interface FlashcardCollectionModel {
+export interface FlashcardCollectionModel {
 	id: number;
 	name: string;
 	flashcards: FlashcardModel[];

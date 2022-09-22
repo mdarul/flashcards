@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { contentColor, getMarginsShorthand, getPaddingsShorthand, largestFontSize, spacing } from '../../../globalStyles';
+import { contentColor, getMarginsShorthand, getPaddingsShorthand, largestFontSize, spacing } from '@globalStyles';
 
 const styles = StyleSheet.create({
 	wrapperContainer: {

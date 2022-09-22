@@ -1,4 +1,4 @@
-export default interface DropdownItem {
+export interface DropdownItem {
 	label: string;
 	value: string;
 }

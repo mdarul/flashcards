@@ -1,5 +1,5 @@
+import { Language } from '@models/enums';
 import React from 'react';
-import Language from '../../../../models/enums/language';
 
 export default interface TranslationInputProps {
 	text: string;

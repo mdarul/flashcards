@@ -1,3 +1,3 @@
-export default interface StyleProps {
+export interface StyleProps {
 	style?: object;
 }

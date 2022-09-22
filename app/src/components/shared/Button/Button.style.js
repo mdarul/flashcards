@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
-import { backgroundGradientStartColor, getMarginsShorthand, grey, spacing } from '../../../globalStyles';
-import { ButtonType } from './Button.data';
+import { backgroundGradientStartColor, getMarginsShorthand, grey, spacing } from '@globalStyles';
+import { ButtonType } from '@models/enums';
 
 export const getButtonStyle = buttonType => {
 	switch (buttonType) {

@@ -3,28 +3,24 @@ import { Dimensions, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import DraggableFlatList, { RenderItemParams, ScaleDecorator } from 'react-native-draggable-flatlist';
-import { translate } from '../../../services/translationService';
-import ScreenWrapper from '../../shared/ScreenWrapper/ScreenWrapper';
-import BarButton from '../../shared/BarButton/BarButton';
-import styles from './FlashcardCollectionListScreen.style';
-import { RootState } from '../../../services/redux/store';
-import { spacing } from '../../../globalStyles';
-import CollectionDataInputModal from './FlashcardCollectionDataInputModal/FlashcardCollectionDataInputModal';
+import { spacing } from '@globalStyles';
+import { NavigationProps } from '@models/props';
+import { FlashcardCollectionCreateEditData, FlashcardCollectionModel } from '@models/dataModels';
+import { Language, Navigation } from '@models/enums';
 import {
 	createFlashcardCollection,
 	editFlashcardCollection,
 	removeFlashcardCollection,
+	RootState,
 	setFlashcardCollections,
 	setSelectedFlashcardCollectionId,
-} from '../../../services/redux/slices/flashcardCollectionsSlice';
-import FlashcardCollectionInfo from './FlashcardCollectionInfo/FlashcardCollectionInfo';
-import ConfirmationModal from '../../shared/ConfirmationModal/ConfirmationModal';
-import FlashcardCollectionModel from '../../../models/dataModels/flashcardCollectionModel';
-import FlashcardCollectionCreateEditData from '../../../models/dataModels/flashcardCollectionCreateEditData';
-import Language from '../../../models/enums/language';
+} from '@services/redux';
+import { translate } from '@services/translationService';
+import { BarButton, ConfirmationModal, ScreenWrapper } from '@components/shared';
 import { emptyFlashcardCollectionCreateEditData } from './FlashcardCollectionListScreen.data';
-import NavigationProps from '../../../models/props/navigationProps';
-import Navigation from '../../../models/enums/navigation';
+import FlashcardCollectionInfo from './FlashcardCollectionInfo/FlashcardCollectionInfo';
+import CollectionDataInputModal from './FlashcardCollectionDataInputModal/FlashcardCollectionDataInputModal';
+import styles from './FlashcardCollectionListScreen.style';
 
 const FlashcardCollectionListScreen = ({ navigation }: NavigationProps) => {
 	const [collectionCreateEditData, setCollectionCreateEditData] = useState<FlashcardCollectionCreateEditData>(

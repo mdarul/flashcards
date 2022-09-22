@@ -8,18 +8,18 @@ import { useFonts, Lato_400Regular, Lato_700Bold } from '@expo-google-fonts/lato
 import moment from 'moment';
 import { setCustomText, setCustomTextInput } from 'react-native-global-props';
 import { AppState, AppStateStatus } from 'react-native';
-import FlashcardCollectionModel from './models/dataModels/flashcardCollectionModel';
-import StorageItemType from './models/enums/storageItemType';
-import { setFlashcardCollections } from './services/redux/slices/flashcardCollectionsSlice';
-import { getData, saveData } from './services/storage';
-import { RootState } from './services/redux/store';
-import FlashcardCollectionListScreen from './components/screens/FlashcardCollectionListScreen/FlashcardCollectionListScreen';
-import { standardFontSize } from './globalStyles';
-import Navigation from './models/enums/navigation';
-import FlashcardCollectionScreen from './components/screens/FlashcardCollectionScreen/FlashcardCollectionScreen';
-import AddFlashcardScreen from './components/screens/AddFlashcardScreen/AddFlashcardScreen';
-import FlaschardListScreen from './components/screens/FlaschardListScreen/FlaschardListScreen';
-import QuizScreen from './components/screens/QuizScreen/QuizScreen';
+import { standardFontSize } from '@globalStyles';
+import { StorageItemType, Navigation } from '@models/enums';
+import { FlashcardCollectionModel } from '@models/dataModels';
+import {
+	AddFlashcardScreen,
+	FlaschardListScreen,
+	FlashcardCollectionListScreen,
+	FlashcardCollectionScreen,
+	QuizScreen,
+} from '@components/screens';
+import { RootState, setFlashcardCollections } from '@services/redux';
+import { getData, saveData } from '@services/storage';
 
 const Stack = createNativeStackNavigator();
 

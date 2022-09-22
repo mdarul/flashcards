@@ -1,4 +1,4 @@
-import FlashcardCollectionModel from '../../../../models/dataModels/flashcardCollectionModel';
+import { FlashcardCollectionModel } from '@models/dataModels';
 
 export default interface FlashcardCollectionInfoProps {
 	flashcardCollection: FlashcardCollectionModel;

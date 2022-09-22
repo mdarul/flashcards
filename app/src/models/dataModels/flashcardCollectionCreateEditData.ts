@@ -1,6 +1,6 @@
-import Language from '../enums/language';
+import { Language } from '@models/enums';
 
-export default interface FlashcardCollectionCreateEditData {
+export interface FlashcardCollectionCreateEditData {
 	name: string;
 	firstLanguage: Language;
 	secondLanguage: Language;

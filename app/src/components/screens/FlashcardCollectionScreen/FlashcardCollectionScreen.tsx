@@ -1,15 +1,14 @@
 import { useSelector } from 'react-redux';
 import { Ionicons } from '@expo/vector-icons';
-import { useEffect, useState } from 'react';
-import { RootState } from '../../../services/redux/store';
-import { translate } from '../../../services/translationService';
-import BarButton from '../../shared/BarButton/BarButton';
-import ScreenWrapper from '../../shared/ScreenWrapper/ScreenWrapper';
+import React, { useEffect, useState } from 'react';
+import { RootState } from '@services/redux';
+import { translate } from '@services/translationService';
+import { spacing } from '@globalStyles';
+import { NavigationProps } from '@models/props';
+import { FlashcardCollectionModel } from '@models/dataModels';
+import { Navigation } from '@models/enums';
+import { BarButton, ScreenWrapper } from '@components/shared';
 import styles from './FlashcardCollectionScreen.style';
-import { spacing } from '../../../globalStyles';
-import Navigation from '../../../models/enums/navigation';
-import NavigationProps from '../../../models/props/navigationProps';
-import FlashcardCollectionModel from '../../../models/dataModels/flashcardCollectionModel';
 
 // TODO probably better way to update selected collection: update of selected collection updates list of collections
 const FlashcardCollectionScreen = ({ navigation }: NavigationProps) => {

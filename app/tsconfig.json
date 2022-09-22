@@ -2,5 +2,13 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "@components/screens": ["./src/components/screens"],
+      "@components/shared": ["./src/components/shared"],
+      "@models/*": ["./src/models/*"],
+      "@services/*": ["./src/services/*"],
+      "@globalStyles": ["./src/globalStyles"],
+    }
   }
 }

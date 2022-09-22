@@ -1,5 +1,5 @@
-import FlashcardCollectionCreateEditData from '../../../models/dataModels/flashcardCollectionCreateEditData';
-import Language from '../../../models/enums/language';
+import { FlashcardCollectionCreateEditData } from '@models/dataModels';
+import { Language } from '@models/enums';
 
 export const emptyFlashcardCollectionCreateEditData: FlashcardCollectionCreateEditData = {
 	name: '',

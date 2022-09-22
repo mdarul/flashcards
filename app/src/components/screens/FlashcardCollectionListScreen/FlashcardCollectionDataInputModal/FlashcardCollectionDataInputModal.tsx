@@ -2,15 +2,14 @@ import { Modal, Text, TextInput, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import DropDownPicker from 'react-native-dropdown-picker';
 import React, { useEffect, useState } from 'react';
-import { spacing } from '../../../../globalStyles';
-import { RootState } from '../../../../services/redux/store';
-import { getLanguageFullName, translate } from '../../../../services/translationService';
-import Button from '../../../shared/Button/Button';
-import { ButtonType } from '../../../shared/Button/Button.data';
-import styles from './FlashcardCollectionDataInputModal.style';
-import DropdownItem from '../../../../models/dataModels/dropdownItem';
+import { spacing } from '@globalStyles';
+import { ButtonType, Language } from '@models/enums';
+import { DropdownItem } from '@models/dataModels';
+import { RootState } from '@services/redux';
+import { getLanguageFullName, translate } from '@services/translationService';
+import { Button } from '@components/shared';
 import { CollectionDataInputModalProps } from './FlashcardCollectionDataInputModal.data';
-import Language from '../../../../models/enums/language';
+import styles from './FlashcardCollectionDataInputModal.style';
 
 const CollectionDataInputModal = ({
 	isVisible,

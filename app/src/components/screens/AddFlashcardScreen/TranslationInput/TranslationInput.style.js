@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { getPaddingsShorthand, spacing } from '../../../../globalStyles';
+import { getPaddingsShorthand, spacing } from '@globalStyles';
 
 const styles = StyleSheet.create({
 	textInput: {

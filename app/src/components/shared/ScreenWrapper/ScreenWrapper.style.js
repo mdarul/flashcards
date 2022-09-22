@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { spacing } from '../../../globalStyles';
+import { spacing } from '@globalStyles';
 
 const styles = StyleSheet.create({
 	container: {

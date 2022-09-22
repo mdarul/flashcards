@@ -1,10 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-export enum ButtonType {
-	WHITE,
-	LIGHT_GREEN,
-	BLUE,
-}
+import { ButtonType } from '@models/enums';
 
 export interface ButtonProps {
 	text: string;

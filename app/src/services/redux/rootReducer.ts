@@ -1,10 +1,9 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import flashcardCollectionsReducer from './slices/flashcardCollectionsSlice';
-import userSettingsReducers from './slices/userSettingsSlice';
+import { flashcardCollectionsReducer, userSettingsReducers } from './slices';
 
 const rootReducer = combineReducers({
 	flashcardCollectionsReducer,
-	userSettingsReducers
+	userSettingsReducers,
 });
 
 export default rootReducer;

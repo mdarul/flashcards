@@ -1,7 +1,7 @@
+import { Language } from '@models/enums';
 import PolishFlag from '../../assets/flags/pl.png';
 import EnglishFlag from '../../assets/flags/gb.png';
 import NorthKoreaFlag from '../../assets/flags/kp.png';
-import Language from '../models/enums/language';
 
 export const languageToFlagImage = (language: Language) => {
 	switch (language) {

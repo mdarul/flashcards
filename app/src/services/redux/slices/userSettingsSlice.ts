@@ -1,12 +1,13 @@
+/* eslint-disable no-param-reassign */
+import { Language } from '@models/enums';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import Language from '../../../models/enums/language';
 
 interface UserSettings {
 	language: Language;
 }
 
 const initialState: UserSettings = {
-	language: Language.ENGLISH
+	language: Language.ENGLISH,
 };
 
 export const userSettingsSlice = createSlice({

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Image, ImageSourcePropType, Text, TextInput, View } from 'react-native';
-import { globalStyles } from '../../../../globalStyles';
-import { languageToFlagImage } from '../../../../services/flagService';
-import { getLanguageFullName } from '../../../../services/translationService';
+import { globalStyles } from '@globalStyles';
+import { languageToFlagImage } from '@services/flagService';
+import { getLanguageFullName } from '@services/translationService';
 import TranslationInputProps from './TranslationInput.data';
 import styles from './TranslationInput.style';
 

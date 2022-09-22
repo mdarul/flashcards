@@ -1,4 +1,4 @@
-export default interface FlashcardModel {
+export interface FlashcardModel {
 	id: number;
 	text: string;
 	translatedText: string;

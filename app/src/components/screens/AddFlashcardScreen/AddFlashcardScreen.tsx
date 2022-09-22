@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { spacing } from '../../../globalStyles';
-import { addFlashcardToCollection } from '../../../services/redux/slices/flashcardCollectionsSlice';
-import { RootState } from '../../../services/redux/store';
-import { translate } from '../../../services/translationService';
-import BarButton from '../../shared/BarButton/BarButton';
-import ScreenWrapper from '../../shared/ScreenWrapper/ScreenWrapper';
+import { spacing } from '@globalStyles';
+import { addFlashcardToCollection, RootState } from '@services/redux';
+import { translate } from '@services/translationService';
+import { BarButton, ScreenWrapper } from '@components/shared';
 import AddFlashcardScreenProps from './AddFlashcardScreen.data';
 import styles from './AddFlashcardScreen.style';
 import TranslationInput from './TranslationInput/TranslationInput';

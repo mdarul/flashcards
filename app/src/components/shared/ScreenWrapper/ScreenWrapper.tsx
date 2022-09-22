@@ -2,8 +2,8 @@ import React from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import { TouchableOpacity, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { backgroundGradientEndColor, backgroundGradientStartColor } from '@globalStyles';
 import styles from './ScreenWrapper.style';
-import { backgroundGradientEndColor, backgroundGradientStartColor } from '../../../globalStyles';
 import { ScreenWrapperProps } from './ScreenWrapper.data';
 import LanguagePickerBar from '../LanguagePickerBar/LanguagePickerBar';
 

@@ -1,5 +1,5 @@
+import { StorageItemType } from '@models/enums';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import StorageItemType from '../models/enums/storageItemType';
 
 export const saveData = async (key: StorageItemType, value: object) => {
 	try {

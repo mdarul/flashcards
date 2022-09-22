@@ -1,3 +1,3 @@
-export default interface ChildrenProps {
-    children: JSX.Element | (JSX.Element | boolean)[];
+export interface ChildrenProps {
+	children: JSX.Element | (JSX.Element | boolean)[];
 }

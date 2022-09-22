@@ -1,8 +1,11 @@
 /* eslint-disable no-param-reassign */
+import {
+	FlashcardCollectionCreateEditData,
+	FlashcardCollectionModel,
+	FlashcardModel,
+	FlashcardModelDto,
+} from '@models/dataModels';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import FlashcardCollectionCreateEditData from '../../../models/dataModels/flashcardCollectionCreateEditData';
-import FlashcardCollectionModel from '../../../models/dataModels/flashcardCollectionModel';
-import FlashcardModel, { FlashcardModelDto } from '../../../models/dataModels/flashcardModel';
 
 export interface FlashcardAndCollectionPayload {
 	flashcard: FlashcardModel;

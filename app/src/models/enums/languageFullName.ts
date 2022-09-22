@@ -1,8 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-enum LanguageFullName {
+export enum LanguageFullName {
 	ENGLISH = 'English',
 	POLISH = 'Polski',
 }
-
-export default LanguageFullName;
