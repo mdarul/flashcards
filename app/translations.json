@@ -208,6 +208,19 @@
         ]
     },
     {
+        "key": "wrong_answer",
+        "values": [
+            {
+                "language": "en",
+                "value": "Wrong answer!"
+            },
+            {
+                "language": "pl",
+                "value": "Błędna odpowiedź!"
+            }
+        ]
+    },
+    {
         "key": "quiz_done_congratulations",
         "values": [
             {

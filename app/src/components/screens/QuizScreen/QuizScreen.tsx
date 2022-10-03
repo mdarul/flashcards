@@ -9,6 +9,7 @@ import { translate } from '@services/translationService';
 import { NavigationProps } from '@models/props';
 import { FlashcardCollectionModel, FlashcardModel } from '@models/dataModels';
 import { ScreenWrapper } from '@components/shared';
+import { hideToast, showErrorToast } from '@services/translationService/toastService';
 import styles from './QuizScreen.style';
 
 const QuizScreen = ({ navigation }: NavigationProps) => {
@@ -52,6 +53,9 @@ const QuizScreen = ({ navigation }: NavigationProps) => {
 	const handleAnswerClicked = (translation: string) => {
 		if (translation === shuffledFlashcards[currentItemIndex].translatedText) {
 			setCurrentItemIndex(prev => prev + 1);
+			hideToast();
+		} else {
+			showErrorToast(translate('wrong_answer', language));
 		}
 	};
 
